@@ -1,16 +1,42 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ElectroGraph AI
 
-Currently, two official plugins are available:
+**An Interactive Web-Based Electronics Block Diagram Generator**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Deliverables Status
+- [x] **Working Prototype**: Fully functional React application with interactive canvas.
+- [x] **Diagram Generation**: Heuristic engine mapping text to 5-block system architecture.
+- [x] **Documentation**: Usage guide and technical design details below.
 
-## React Compiler
+## Quick Start
+1.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
+2.  **Run Locally**:
+    ```bash
+    npm run dev
+    ```
+3.  **Open in Browser**: Navigate to `http://localhost:5174` (or port shown in terminal).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
+- **AI-Assisted Generation**: Type "Smart Doorbell with camera and wifi" to instantly generate a schematic.
+- **Interactive Editing**:
+    - **Add**: Use the Left Sidebar to drop in Power, Input, Control, Output, or Other blocks.
+    - **Edit**: Click any node to rename it in the Right Properties Panel.
+    - **Connect**: Drag wires between white handles on nodes.
+    - **Delete**: Remove selected nodes or wires via the panel or Backspace key.
+- **Export**: Save your work as a JSON file (for later editing) or PNG image (for presentation).
 
-## Expanding the ESLint configuration
+## Technical Documentation
+For a deep dive into the **Diagram Generation Logic**, **Component Placement Strategy**, and system architecture, please refer to [DESIGN.md](./DESIGN.md).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Summary of Placement Logic
+We use a **Star Topology** where:
+- **Control Unit (Center)**: The brain of the system.
+- **Power (Top)**: Feeds down to the rest.
+- **Inputs (Left)**: Flow into the control unit.
+- **Outputs (Right)**: Flow out from the control unit.
+- **Peripherals (Bottom)**: Support modules.
+
+This precise geometric layout ensures diagrams are always clean, readable, and professional, avoiding the "spaghetti" mess of random generation.
